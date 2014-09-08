@@ -12,6 +12,7 @@
 		5C7023C419BE131C00C4BA7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7023C219BE131C00C4BA7F /* Main.storyboard */; };
 		5C7023C619BE131C00C4BA7F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C7023C519BE131C00C4BA7F /* Images.xcassets */; };
 		5C7023D219BE131C00C4BA7F /* RangeSliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7023D119BE131C00C4BA7F /* RangeSliderTests.swift */; };
+		5C7023DC19BE134000C4BA7F /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7023DB19BE134000C4BA7F /* RangeSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		5C7023CB19BE131C00C4BA7F /* RangeSliderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RangeSliderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7023D019BE131C00C4BA7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C7023D119BE131C00C4BA7F /* RangeSliderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderTests.swift; sourceTree = "<group>"; };
+		5C7023DB19BE134000C4BA7F /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				5C7023BE19BE131C00C4BA7F /* AppDelegate.swift */,
 				5C7023C019BE131C00C4BA7F /* ViewController.swift */,
+				5C7023DB19BE134000C4BA7F /* RangeSlider.swift */,
 				5C7023C219BE131C00C4BA7F /* Main.storyboard */,
 				5C7023C519BE131C00C4BA7F /* Images.xcassets */,
 				5C7023BC19BE131C00C4BA7F /* Supporting Files */,
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C7023C119BE131C00C4BA7F /* ViewController.swift in Sources */,
+				5C7023DC19BE134000C4BA7F /* RangeSlider.swift in Sources */,
 				5C7023BF19BE131C00C4BA7F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
