@@ -5,7 +5,7 @@ RangeSlider
 A simple range slider made in Swift.
 
 # Screenshot
-![](https://github.com/sgwilly/RangeSlider/blob/master/screenshot.png?raw=true) 
+![](https://github.com/sgwilly/RangeSlider/blob/master/Screenshot.png?raw=true) 
 
 # Use
 This control uses the **target-action** pattern for change notifications.
