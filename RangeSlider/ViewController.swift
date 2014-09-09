@@ -27,9 +27,9 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         let margin: CGFloat = 20.0
         let width = view.bounds.width - 2.0 * margin
-        rangeSlider1.frame = CGRect(x: margin, y: margin + topLayoutGuide.length,
+        rangeSlider1.frame = CGRect(x: margin, y: margin + topLayoutGuide.length + 100,
             width: width, height: 31.0)
-        rangeSlider2.frame = CGRect(x: margin + 20, y: 5 * margin + topLayoutGuide.length,
+        rangeSlider2.frame = CGRect(x: margin + 20, y: 5 * margin + topLayoutGuide.length + 100,
             width: width - 40, height: 40)
     }
     
