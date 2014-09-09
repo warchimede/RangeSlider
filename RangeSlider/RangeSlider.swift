@@ -126,7 +126,15 @@ class RangeSlider: UIControl {
     }
     
     var curvaceousness: CGFloat = 1.0 {
-        didSet {
+        didSet(newValue) {
+            if newValue < 0.0 {
+                curvaceousness = 0.0
+            }
+            
+            if newValue > 1.0 {
+                curvaceousness = 1.0
+            }
+            
             trackLayer.setNeedsDisplay()
             lowerThumbLayer.setNeedsDisplay()
             upperThumbLayer.setNeedsDisplay()
