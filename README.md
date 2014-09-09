@@ -32,4 +32,4 @@ The range slider can be customized and information can be accessed through these
 ## License
 This control was made available under the MIT License
 
-If you use it and like it, let me know: @sgwilly
+If you use it and like it, let me know: [@sgwilly](http://twitter.com/sgwilly)
