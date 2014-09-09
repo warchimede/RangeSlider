@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1EE8E7B5-1824-40B2-92F0-EB1E64686CC9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>RangeSlider</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>40E35DCA1CEB2B3E09B83F60EA9A73774B35A121</key>
+		<string>https://github.com/sgwilly/RangeSlider.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>RangeSlider.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>40E35DCA1CEB2B3E09B83F60EA9A73774B35A121</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/sgwilly/RangeSlider.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>40E35DCA1CEB2B3E09B83F60EA9A73774B35A121</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>40E35DCA1CEB2B3E09B83F60EA9A73774B35A121</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RangeSlider</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -48,15 +48,14 @@ class RangeSliderThumbLayer: CALayer {
             let cornerRadius = thumbFrame.height * slider.curvaceousness / 2.0
             let thumbPath = UIBezierPath(roundedRect: thumbFrame, cornerRadius: cornerRadius)
             
-            // Fill - with a subtle shadow
-            let shadowColor = UIColor.grayColor()
-            CGContextSetShadowWithColor(ctx, CGSize(width: 0.0, height: 1.0), 1.0, shadowColor.CGColor)
+            // Fill
             CGContextSetFillColorWithColor(ctx, slider.thumbTintColor.CGColor)
             CGContextAddPath(ctx, thumbPath.CGPath)
             CGContextFillPath(ctx)
             
             // Outline
-            CGContextSetStrokeColorWithColor(ctx, shadowColor.CGColor)
+            let strokeColor = UIColor.grayColor()
+            CGContextSetStrokeColorWithColor(ctx, strokeColor.CGColor)
             CGContextSetLineWidth(ctx, 0.5)
             CGContextAddPath(ctx, thumbPath.CGPath)
             CGContextStrokePath(ctx)
@@ -72,25 +71,37 @@ class RangeSliderThumbLayer: CALayer {
 
 class RangeSlider: UIControl {
     var minimumValue: Double = 0.0 {
+        willSet(newValue) {
+            assert(newValue < maximumValue, "RangeSlider: minimumValue should be lower than maximumValue")
+        }
         didSet {
             updateLayerFrames()
         }
     }
     
     var maximumValue: Double = 1.0 {
+        willSet(newValue) {
+            assert(newValue > minimumValue, "RangeSlider: maximumValue should be greater than minimumValue")
+        }
         didSet {
             updateLayerFrames()
         }
     }
     
     var lowerValue: Double = 0.2 {
-        didSet {
+        didSet(newValue) {
+            if newValue < minimumValue {
+                lowerValue = minimumValue
+            }
             updateLayerFrames()
         }
     }
     
     var upperValue: Double = 0.8 {
-        didSet {
+        didSet(newValue) {
+            if newValue > maximumValue {
+                upperValue = maximumValue
+            }
             updateLayerFrames()
         }
     }
@@ -205,13 +216,13 @@ class RangeSlider: UIControl {
     override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent) -> Bool {
         let location = touch.locationInView(self)
         
-        // 1. Determine by how much the user has dragged
+        // Determine by how much the user has dragged
         let deltaLocation = Double(location.x - previouslocation.x)
         let deltaValue = (maximumValue - minimumValue) * deltaLocation / Double(bounds.width - bounds.height)
         
         previouslocation = location
         
-        // 2. Update the values
+        // Update the values
         if lowerThumbLayer.highlighted {
             lowerValue += deltaValue
             lowerValue = boundValue(lowerValue, toLowerValue: minimumValue, upperValue: upperValue)
