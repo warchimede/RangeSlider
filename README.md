@@ -10,8 +10,10 @@ A simple range slider made in Swift.
 # Use
 This control uses the **target-action** pattern for change notifications.
 
-In order to be notified when either thumb value changes, register for .ValueChanged:
-`rangeSlider1.addTarget(self, action: "rangeSliderValueChanged:", forControlEvents: .ValueChanged)`
+In order to be notified when either thumb value changes, register for **.ValueChanged**:
+`let rangeSlider = RangeSlider(frame: frame)
+ rangeSlider.addTarget(self, action: "rangeSliderValueChanged:", 
+                             forControlEvents: .ValueChanged)`
 
 # License
 This control was made available under the MIT License
