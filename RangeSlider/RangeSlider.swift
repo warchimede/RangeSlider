@@ -106,6 +106,10 @@ class RangeSlider: UIControl {
         }
     }
     
+    var gapBetweenThumbs: Double {
+        return Double(thumbWidth)*(maximumValue - minimumValue) / Double(bounds.width)
+    }
+    
     var trackTintColor: UIColor = UIColor(white: 0.9, alpha: 1.0) {
         didSet {
             trackLayer.setNeedsDisplay()
@@ -232,11 +236,9 @@ class RangeSlider: UIControl {
         
         // Update the values
         if lowerThumbLayer.highlighted {
-            lowerValue += deltaValue
-            lowerValue = boundValue(lowerValue, toLowerValue: minimumValue, upperValue: upperValue)
+            lowerValue = boundValue(lowerValue + deltaValue, toLowerValue: minimumValue, upperValue: upperValue - gapBetweenThumbs)
         } else if upperThumbLayer.highlighted {
-            upperValue += deltaValue
-            upperValue = boundValue(upperValue, toLowerValue: lowerValue, upperValue: maximumValue)
+            upperValue = boundValue(upperValue + deltaValue, toLowerValue: lowerValue + gapBetweenThumbs, upperValue: maximumValue)
         }
         
         sendActionsForControlEvents(.ValueChanged)
