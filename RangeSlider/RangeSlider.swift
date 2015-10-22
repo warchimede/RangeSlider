@@ -89,8 +89,8 @@ class RangeSlider: UIControl {
     }
     
     var lowerValue: Double = 0.2 {
-        didSet(newValue) {
-            if newValue < minimumValue {
+        didSet {
+            if lowerValue < minimumValue {
                 lowerValue = minimumValue
             }
             updateLayerFrames()
@@ -98,8 +98,8 @@ class RangeSlider: UIControl {
     }
     
     var upperValue: Double = 0.8 {
-        didSet(newValue) {
-            if newValue > maximumValue {
+        didSet {
+            if upperValue > maximumValue {
                 upperValue = maximumValue
             }
             updateLayerFrames()
@@ -130,12 +130,12 @@ class RangeSlider: UIControl {
     }
     
     var curvaceousness: CGFloat = 1.0 {
-        didSet(newValue) {
-            if newValue < 0.0 {
+        didSet {
+            if curvaceousness < 0.0 {
                 curvaceousness = 0.0
             }
             
-            if newValue > 1.0 {
+            if curvaceousness > 1.0 {
                 curvaceousness = 1.0
             }
             
