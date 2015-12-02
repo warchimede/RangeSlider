@@ -8,7 +8,7 @@ A simple range slider made in Swift.
 ![](https://github.com/sgwilly/RangeSlider/blob/master/Screenshot.png?raw=true) 
 
 ## Use
-This control uses the **target-action** pattern for change notifications.
+This control is **IBDesignable** and uses the **target-action** pattern for change notifications.
 
 In order to be notified when either thumb value changes, register for **.ValueChanged**:
 
