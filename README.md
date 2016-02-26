@@ -5,7 +5,7 @@ RangeSlider
 A simple range slider made in Swift.
 
 ## Screenshot
-![](https://github.com/sgwilly/RangeSlider/blob/master/Screenshot.png?raw=true) 
+![](https://github.com/warchimede/RangeSlider/blob/master/Screenshot.png?raw=true)
 
 ## Use
 This control is **IBDesignable** and uses the **target-action** pattern for change notifications.
@@ -14,7 +14,7 @@ In order to be notified when either thumb value changes, register for **.ValueCh
 
     let rangeSlider = RangeSlider(frame: frame)
     view.addSubView(rangeSlider)
-    rangeSlider.addTarget(self, action: "rangeSliderValueChanged:", 
+    rangeSlider.addTarget(self, action: "rangeSliderValueChanged:",
                              forControlEvents: .ValueChanged)
 
 ## Configuration
@@ -32,4 +32,4 @@ The range slider can be customized and information can be accessed through these
 ## License
 This control was made available under the MIT License
 
-If you use it and like it, let me know: [@sgwilly](http://twitter.com/sgwilly)
+If you use it and like it, let me know: [@warchimede](http://twitter.com/warchimede)
