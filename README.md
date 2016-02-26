@@ -30,6 +30,6 @@ The range slider can be customized and information can be accessed through these
   + `curvaceousness` : From 0.0 for square thumbs to 1.0 for circle thumbs
 
 ## License
-This control was made available under the MIT License
+RangeSlider is available under the MIT License
 
 If you use it and like it, let me know: [@warchimede](http://twitter.com/warchimede)
