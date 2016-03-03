@@ -13,24 +13,26 @@ class RangeSliderTrackLayer: CALayer {
     weak var rangeSlider: RangeSlider?
     
     override func drawInContext(ctx: CGContext) {
-        if let slider = rangeSlider {
-            // Clip
-            let cornerRadius = bounds.height * slider.curvaceousness / 2.0
-            let path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
-            CGContextAddPath(ctx, path.CGPath)
-            
-            // Fill the track
-            CGContextSetFillColorWithColor(ctx, slider.trackTintColor.CGColor)
-            CGContextAddPath(ctx, path.CGPath)
-            CGContextFillPath(ctx)
-            
-            // Fill the highlighted range
-            CGContextSetFillColorWithColor(ctx, slider.trackHighlightTintColor.CGColor)
-            let lowerValuePosition = CGFloat(slider.positionForValue(slider.lowerValue))
-            let upperValuePosition = CGFloat(slider.positionForValue(slider.upperValue))
-            let rect = CGRect(x: lowerValuePosition, y: 0.0, width: upperValuePosition - lowerValuePosition, height: bounds.height)
-            CGContextFillRect(ctx, rect)
+        guard let slider = rangeSlider else {
+            return
         }
+
+        // Clip
+        let cornerRadius = bounds.height * slider.curvaceousness / 2.0
+        let path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
+        CGContextAddPath(ctx, path.CGPath)
+            
+        // Fill the track
+        CGContextSetFillColorWithColor(ctx, slider.trackTintColor.CGColor)
+        CGContextAddPath(ctx, path.CGPath)
+        CGContextFillPath(ctx)
+            
+        // Fill the highlighted range
+        CGContextSetFillColorWithColor(ctx, slider.trackHighlightTintColor.CGColor)
+        let lowerValuePosition = CGFloat(slider.positionForValue(slider.lowerValue))
+        let upperValuePosition = CGFloat(slider.positionForValue(slider.upperValue))
+        let rect = CGRect(x: lowerValuePosition, y: 0.0, width: upperValuePosition - lowerValuePosition, height: bounds.height)
+        CGContextFillRect(ctx, rect)
     }
 }
 
@@ -43,28 +45,30 @@ class RangeSliderThumbLayer: CALayer {
     weak var rangeSlider: RangeSlider?
     
     override func drawInContext(ctx: CGContext) {
-        if let slider = rangeSlider {
-            let thumbFrame = bounds.insetBy(dx: 2.0, dy: 2.0)
-            let cornerRadius = thumbFrame.height * slider.curvaceousness / 2.0
-            let thumbPath = UIBezierPath(roundedRect: thumbFrame, cornerRadius: cornerRadius)
+        guard let slider = rangeSlider else {
+            return
+        }
+
+        let thumbFrame = bounds.insetBy(dx: 2.0, dy: 2.0)
+        let cornerRadius = thumbFrame.height * slider.curvaceousness / 2.0
+        let thumbPath = UIBezierPath(roundedRect: thumbFrame, cornerRadius: cornerRadius)
             
-            // Fill
-            CGContextSetFillColorWithColor(ctx, slider.thumbTintColor.CGColor)
+        // Fill
+        CGContextSetFillColorWithColor(ctx, slider.thumbTintColor.CGColor)
+        CGContextAddPath(ctx, thumbPath.CGPath)
+        CGContextFillPath(ctx)
+            
+        // Outline
+        let strokeColor = UIColor.grayColor()
+        CGContextSetStrokeColorWithColor(ctx, strokeColor.CGColor)
+        CGContextSetLineWidth(ctx, 0.5)
+        CGContextAddPath(ctx, thumbPath.CGPath)
+        CGContextStrokePath(ctx)
+            
+        if highlighted {
+            CGContextSetFillColorWithColor(ctx, UIColor(white: 0.0, alpha: 0.1).CGColor)
             CGContextAddPath(ctx, thumbPath.CGPath)
             CGContextFillPath(ctx)
-            
-            // Outline
-            let strokeColor = UIColor.grayColor()
-            CGContextSetStrokeColorWithColor(ctx, strokeColor.CGColor)
-            CGContextSetLineWidth(ctx, 0.5)
-            CGContextAddPath(ctx, thumbPath.CGPath)
-            CGContextStrokePath(ctx)
-            
-            if highlighted {
-                CGContextSetFillColorWithColor(ctx, UIColor(white: 0.0, alpha: 0.1).CGColor)
-                CGContextAddPath(ctx, thumbPath.CGPath)
-                CGContextFillPath(ctx)
-            }
         }
     }
 }
@@ -174,7 +178,14 @@ class RangeSlider: UIControl {
         initializeLayers()
     }
 
+    override func layoutSublayersOfLayer(layer: CALayer) {
+        super.layoutSublayersOfLayer(layer)
+        updateLayerFrames()
+    }
+
     private func initializeLayers() {
+        layer.backgroundColor = UIColor.clearColor().CGColor
+
         trackLayer.rangeSlider = self
         trackLayer.contentsScale = UIScreen.mainScreen().scale
         layer.addSublayer(trackLayer)
@@ -186,8 +197,6 @@ class RangeSlider: UIControl {
         upperThumbLayer.rangeSlider = self
         upperThumbLayer.contentsScale = UIScreen.mainScreen().scale
         layer.addSublayer(upperThumbLayer)
-
-        updateLayerFrames()
     }
     
     func updateLayerFrames() {
@@ -210,7 +219,7 @@ class RangeSlider: UIControl {
     
     func positionForValue(value: Double) -> Double {
         return Double(bounds.width - thumbWidth) * (value - minimumValue) /
-            (maximumValue - minimumValue) + Double(thumbWidth / 2.0)
+            (maximumValue - minimumValue) + Double(thumbWidth/2.0)
     }
     
     func boundValue(value: Double, toLowerValue lowerValue: Double, upperValue: Double) -> Double {
