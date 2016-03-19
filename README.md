@@ -1,5 +1,8 @@
-RangeSlider
-===========
+# RangeSlider
+
+[![CI Status](https://img.shields.io/travis/warchimede/RangeSlider.svg?style=flat)](https://travis-ci.org/warchimede/RangeSlider)
+[![License](https://img.shields.io/cocoapods/l/CellAnimator.svg?style=flat)](http://cocoapods.org/pods/CellAnimator)
+[![Platform](https://img.shields.io/cocoapods/p/CellAnimator.svg?style=flat)](http://cocoapods.org/pods/CellAnimator)
 
 ## Summary
 A simple range slider made in Swift.
