@@ -18,10 +18,16 @@ class ViewController: UIViewController {
         rangeSlider2.trackHighlightTintColor = UIColor.redColor()
         rangeSlider2.curvaceousness = 0.0
         
+        // Make rangeSlider 2 use an inverted scale (100->0)
+        rangeSlider2.minimumValue = 100
+        rangeSlider2.maximumValue = 0
+        rangeSlider2.lowerValue = 100
+        
         view.addSubview(rangeSlider1)
         view.addSubview(rangeSlider2)
         
-        rangeSlider1.addTarget(self, action: "rangeSliderValueChanged:", forControlEvents: .ValueChanged)
+        rangeSlider1.addTarget(self, action: #selector(rangeSliderValueChanged), forControlEvents: .ValueChanged)
+        rangeSlider2.addTarget(self, action: #selector(rangeSliderValueChanged), forControlEvents: .ValueChanged)
     }
     
     override func viewDidLayoutSubviews() {
