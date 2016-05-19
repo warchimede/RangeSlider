@@ -76,18 +76,12 @@ class RangeSliderThumbLayer: CALayer {
 @IBDesignable
 class RangeSlider: UIControl {
     @IBInspectable var minimumValue: Double = 0.0 {
-        willSet(newValue) {
-            assert(newValue < maximumValue, "RangeSlider: minimumValue should be lower than maximumValue")
-        }
         didSet {
             updateLayerFrames()
         }
     }
     
     @IBInspectable var maximumValue: Double = 1.0 {
-        willSet(newValue) {
-            assert(newValue > minimumValue, "RangeSlider: maximumValue should be greater than minimumValue")
-        }
         didSet {
             updateLayerFrames()
         }
@@ -95,18 +89,12 @@ class RangeSlider: UIControl {
     
     @IBInspectable var lowerValue: Double = 0.2 {
         didSet {
-            if lowerValue < minimumValue {
-                lowerValue = minimumValue
-            }
             updateLayerFrames()
         }
     }
     
     @IBInspectable var upperValue: Double = 0.8 {
         didSet {
-            if upperValue > maximumValue {
-                upperValue = maximumValue
-            }
             updateLayerFrames()
         }
     }
@@ -253,9 +241,15 @@ class RangeSlider: UIControl {
         
         // Update the values
         if lowerThumbLayer.highlighted {
-            lowerValue = boundValue(lowerValue + deltaValue, toLowerValue: minimumValue, upperValue: upperValue - gapBetweenThumbs)
+            // Find out if the slider is using a normal or an inverted scale, and set the bounds appropriatley
+            let lowerBound = minimumValue < maximumValue ? minimumValue : upperValue - gapBetweenThumbs
+            let upperBound = minimumValue < maximumValue ? upperValue - gapBetweenThumbs : minimumValue
+            lowerValue = boundValue(lowerValue + deltaValue, toLowerValue: lowerBound, upperValue: upperBound)
         } else if upperThumbLayer.highlighted {
-            upperValue = boundValue(upperValue + deltaValue, toLowerValue: lowerValue + gapBetweenThumbs, upperValue: maximumValue)
+            // Find out if the slider is using a normal or an inverted scale, and set the bounds appropriatley
+            let lowerBound = minimumValue < maximumValue ? lowerValue + gapBetweenThumbs : maximumValue
+            let upperBound = minimumValue < maximumValue ? maximumValue : lowerValue + gapBetweenThumbs
+            upperValue = boundValue(upperValue + deltaValue, toLowerValue: lowerBound, upperValue: upperBound)
         }
         
         sendActionsForControlEvents(.ValueChanged)
