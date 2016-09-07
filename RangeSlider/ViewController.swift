@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         view.addSubview(rangeSlider1)
         view.addSubview(rangeSlider2)
         
-        rangeSlider1.addTarget(self, action: "rangeSliderValueChanged:", forControlEvents: .ValueChanged)
+        rangeSlider1.addTarget(self, action: #selector(ViewController.rangeSliderValueChanged(_:)), forControlEvents: .ValueChanged)
     }
     
     override func viewDidLayoutSubviews() {
