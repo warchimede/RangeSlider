@@ -9,19 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let rangeSlider1 = RangeSlider(frame: CGRectZero)
-    let rangeSlider2 = RangeSlider(frame: CGRectZero)
+    let rangeSlider1 = RangeSlider(frame: CGRect.zero)
+    let rangeSlider2 = RangeSlider(frame: CGRect.zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        rangeSlider2.trackHighlightTintColor = UIColor.redColor()
+        rangeSlider2.trackHighlightTintColor = UIColor.red
         rangeSlider2.curvaceousness = 0.0
         
         view.addSubview(rangeSlider1)
         view.addSubview(rangeSlider2)
         
-        rangeSlider1.addTarget(self, action: #selector(ViewController.rangeSliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        rangeSlider1.addTarget(self, action: #selector(ViewController.rangeSliderValueChanged(_:)), for: .valueChanged)
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func rangeSliderValueChanged(rangeSlider: RangeSlider) {
+    func rangeSliderValueChanged(_ rangeSlider: RangeSlider) {
         print("Range slider value changed: (\(rangeSlider.lowerValue) , \(rangeSlider.upperValue))")
     }
 }
