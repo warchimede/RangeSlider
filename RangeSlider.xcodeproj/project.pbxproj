@@ -450,6 +450,7 @@
 				5C33A2D81DAE9C5600DDCF9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5C39170C1BA4A83600515C54 /* Build configuration list for PBXProject "RangeSlider" */ = {
 			isa = XCConfigurationList;
