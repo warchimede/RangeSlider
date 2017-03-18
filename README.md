@@ -3,6 +3,7 @@
 [![CI Status](https://img.shields.io/travis/warchimede/RangeSlider.svg?style=flat)](https://travis-ci.org/warchimede/RangeSlider)
 [![License](https://img.shields.io/cocoapods/l/CellAnimator.svg?style=flat)](http://cocoapods.org/pods/CellAnimator)
 [![Platform](https://img.shields.io/cocoapods/p/CellAnimator.svg?style=flat)](http://cocoapods.org/pods/CellAnimator)
+[![Version](https://img.shields.io/cocoapods/v/WARangeSlider.svg?style=flat)](http://cocoapods.org/pods/WARangeSlider)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Summary
@@ -16,10 +17,12 @@ This control is **IBDesignable** and uses the **target-action** pattern for chan
 
 In order to be notified when either thumb value changes, register for **.ValueChanged**:
 
-    let rangeSlider = RangeSlider(frame: frame)
-    view.addSubView(rangeSlider)
-    rangeSlider.addTarget(self, action: "rangeSliderValueChanged:",
-                             forControlEvents: .ValueChanged)
+```swift
+let rangeSlider = RangeSlider(frame: frame)
+view.addSubView(rangeSlider)
+rangeSlider.addTarget(self, action: "rangeSliderValueChanged:",
+                  forControlEvents: .ValueChanged)
+```
 
 ## Configuration
 The range slider can be customized and information can be accessed through these properties :
@@ -34,6 +37,19 @@ The range slider can be customized and information can be accessed through these
   + `thumbBorderColor`: The thumb border color
   + `thumbBorderWidth`: The width of the thumb border
   + `curvaceousness` : From 0.0 for square thumbs to 1.0 for circle thumbs
+
+## Installation
+
+RangeSlider is available through [CocoaPods](http://cocoapods.org).
+To install it, simply add the following line to your Podfile :
+
+```ruby
+pod "WARangeSlider"
+```
+
+## Author
+
+[William Archimede](http://twitter.com/warchimede)
 
 ## License
 RangeSlider is available under the MIT License
