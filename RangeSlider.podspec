@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name         = "RangeSlider"
+  s.name         = "WARangeSlider"
   s.version      = "1.1.0"
   s.summary      = "A simple range slider made in Swift"
 
