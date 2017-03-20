@@ -20,8 +20,8 @@ In order to be notified when either thumb value changes, register for **.ValueCh
 ```swift
 let rangeSlider = RangeSlider(frame: frame)
 view.addSubView(rangeSlider)
-rangeSlider.addTarget(self, action: "rangeSliderValueChanged:",
-                  forControlEvents: .ValueChanged)
+rangeSlider.addTarget(self, action: #selector(viewController.rangeSliderValueChanged(_:)),
+                         for: .valueChanged)
 ```
 
 ## Configuration
