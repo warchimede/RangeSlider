@@ -85,8 +85,8 @@ class RangeSliderThumbLayer: CALayer {
 }
 
 @IBDesignable
-class RangeSlider: UIControl {
-    @IBInspectable var minimumValue: Double = 0.0 {
+public class RangeSlider: UIControl {
+    @IBInspectable public var minimumValue: Double = 0.0 {
         willSet(newValue) {
             assert(newValue < maximumValue, "RangeSlider: minimumValue should be lower than maximumValue")
         }
@@ -95,7 +95,7 @@ class RangeSlider: UIControl {
         }
     }
     
-    @IBInspectable var maximumValue: Double = 1.0 {
+    @IBInspectable public var maximumValue: Double = 1.0 {
         willSet(newValue) {
             assert(newValue > minimumValue, "RangeSlider: maximumValue should be greater than minimumValue")
         }
@@ -104,7 +104,7 @@ class RangeSlider: UIControl {
         }
     }
     
-    @IBInspectable var lowerValue: Double = 0.2 {
+    @IBInspectable public var lowerValue: Double = 0.2 {
         didSet {
             if lowerValue < minimumValue {
                 lowerValue = minimumValue
@@ -113,7 +113,7 @@ class RangeSlider: UIControl {
         }
     }
     
-    @IBInspectable var upperValue: Double = 0.8 {
+    @IBInspectable public var upperValue: Double = 0.8 {
         didSet {
             if upperValue > maximumValue {
                 upperValue = maximumValue
@@ -126,40 +126,40 @@ class RangeSlider: UIControl {
         return 0.5 * Double(thumbWidth) * (maximumValue - minimumValue) / Double(bounds.width)
     }
     
-    @IBInspectable var trackTintColor: UIColor = UIColor(white: 0.9, alpha: 1.0) {
+    @IBInspectable public var trackTintColor: UIColor = UIColor(white: 0.9, alpha: 1.0) {
         didSet {
             trackLayer.setNeedsDisplay()
         }
     }
     
-    @IBInspectable var trackHighlightTintColor: UIColor = UIColor(red: 0.0, green: 0.45, blue: 0.94, alpha: 1.0) {
+    @IBInspectable public var trackHighlightTintColor: UIColor = UIColor(red: 0.0, green: 0.45, blue: 0.94, alpha: 1.0) {
         didSet {
             trackLayer.setNeedsDisplay()
         }
     }
     
-    @IBInspectable var thumbTintColor: UIColor = UIColor.white {
+    @IBInspectable public var thumbTintColor: UIColor = UIColor.white {
         didSet {
             lowerThumbLayer.setNeedsDisplay()
             upperThumbLayer.setNeedsDisplay()
         }
     }
     
-    @IBInspectable var thumbBorderColor: UIColor = UIColor.gray {
+    @IBInspectable public var thumbBorderColor: UIColor = UIColor.gray {
         didSet {
             lowerThumbLayer.strokeColor = thumbBorderColor
             upperThumbLayer.strokeColor = thumbBorderColor
         }
     }
     
-    @IBInspectable var thumbBorderWidth: CGFloat = 0.5 {
+    @IBInspectable public var thumbBorderWidth: CGFloat = 0.5 {
         didSet {
             lowerThumbLayer.lineWidth = thumbBorderWidth
             upperThumbLayer.lineWidth = thumbBorderWidth
         }
     }
     
-    @IBInspectable var curvaceousness: CGFloat = 1.0 {
+    @IBInspectable public var curvaceousness: CGFloat = 1.0 {
         didSet {
             if curvaceousness < 0.0 {
                 curvaceousness = 0.0
@@ -185,23 +185,23 @@ class RangeSlider: UIControl {
         return CGFloat(bounds.height)
     }
     
-    override var frame: CGRect {
+    override public var frame: CGRect {
         didSet {
             updateLayerFrames()
         }
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         initializeLayers()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         initializeLayers()
     }
     
-    override func layoutSublayers(of: CALayer) {
+    override public func layoutSublayers(of: CALayer) {
         super.layoutSublayers(of:layer)
         updateLayerFrames()
     }
@@ -252,7 +252,7 @@ class RangeSlider: UIControl {
     
     // MARK: - Touches
     
-    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+    override public func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         previouslocation = touch.location(in: self)
         
         // Hit test the thumb layers
@@ -265,7 +265,7 @@ class RangeSlider: UIControl {
         return lowerThumbLayer.highlighted || upperThumbLayer.highlighted
     }
     
-    override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+    override public func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         let location = touch.location(in: self)
         
         // Determine by how much the user has dragged
@@ -286,7 +286,7 @@ class RangeSlider: UIControl {
         return true
     }
     
-    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+    override public func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         lowerThumbLayer.highlighted = false
         upperThumbLayer.highlighted = false
     }
