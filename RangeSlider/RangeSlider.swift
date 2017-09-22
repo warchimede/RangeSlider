@@ -175,7 +175,7 @@ public class RangeSlider: UIControl {
         }
     }
     
-    var trackHeight: CGFloat? = nil {
+    public var trackHeight: CGFloat? = nil {
         didSet {
             updateLayerFrames()
         }
