@@ -232,9 +232,9 @@ public class RangeSlider: UIControl {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         
-        let trackHeight = self.trackHeight ?? bounds.height / 3
+        let trackOffset = trackHeight.map { (bounds.height - $0) / 2 } ?? bounds.height / 3
         
-        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: trackHeight)
+        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: trackOffset)
         trackLayer.setNeedsDisplay()
         
         let lowerThumbCenter = CGFloat(positionForValue(lowerValue))
