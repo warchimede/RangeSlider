@@ -289,5 +289,7 @@ public class RangeSlider: UIControl {
     override public func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         lowerThumbLayer.highlighted = false
         upperThumbLayer.highlighted = false
+		
+		sendActions(for: .editingDidEnd)
     }
 }
