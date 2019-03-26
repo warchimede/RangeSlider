@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func rangeSliderValueChanged(_ rangeSlider: RangeSlider) {
+    @objc func rangeSliderValueChanged(_ rangeSlider: RangeSlider) {
         print("Range slider value changed: (\(rangeSlider.lowerValue) , \(rangeSlider.upperValue))")
     }
 }
