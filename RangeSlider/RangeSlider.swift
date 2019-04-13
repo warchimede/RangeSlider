@@ -175,6 +175,12 @@ public class RangeSlider: UIControl {
         }
     }
     
+    public var trackHeight: CGFloat? = nil {
+        didSet {
+            updateLayerFrames()
+        }
+    }
+    
     fileprivate var previouslocation = CGPoint()
     
     fileprivate let trackLayer = RangeSliderTrackLayer()
@@ -226,7 +232,9 @@ public class RangeSlider: UIControl {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         
-        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: bounds.height/3)
+        let trackOffset = trackHeight.map { (bounds.height - $0) / 2 } ?? bounds.height / 3
+        
+        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: trackOffset)
         trackLayer.setNeedsDisplay()
         
         let lowerThumbCenter = CGFloat(positionForValue(lowerValue))
