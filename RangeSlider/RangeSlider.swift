@@ -229,11 +229,18 @@ public class RangeSlider: UIControl {
         trackLayer.frame = bounds.insetBy(dx: 0.0, dy: bounds.height/3)
         trackLayer.setNeedsDisplay()
         
-        let lowerThumbCenter = CGFloat(positionForValue(lowerValue))
+        var lowerThumbCenter = CGFloat(positionForValue(lowerValue))
+        if lowerThumbCenter.isNaN.boolValue == true {
+            lowerThumbCenter = 0
+        }
+        
         lowerThumbLayer.frame = CGRect(x: lowerThumbCenter - thumbWidth/2.0, y: 0.0, width: thumbWidth, height: thumbWidth)
         lowerThumbLayer.setNeedsDisplay()
         
-        let upperThumbCenter = CGFloat(positionForValue(upperValue))
+        var upperThumbCenter = CGFloat(positionForValue(upperValue))
+        if upperThumbCenter.isNaN.boolValue == true {
+            upperThumbCenter = 0
+        }
         upperThumbLayer.frame = CGRect(x: upperThumbCenter - thumbWidth/2.0, y: 0.0, width: thumbWidth, height: thumbWidth)
         upperThumbLayer.setNeedsDisplay()
         
