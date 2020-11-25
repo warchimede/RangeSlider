@@ -122,6 +122,8 @@ public class RangeSlider: UIControl {
         }
     }
     
+    @IBInspectable public var sticky: Bool = false
+    
     var gapBetweenThumbs: Double {
         return 0.5 * Double(thumbWidth) * (maximumValue - minimumValue) / Double(bounds.width)
     }
@@ -277,8 +279,17 @@ public class RangeSlider: UIControl {
         // Update the values
         if lowerThumbLayer.highlighted {
             lowerValue = boundValue(lowerValue + deltaValue, toLowerValue: minimumValue, upperValue: upperValue - gapBetweenThumbs)
+            if(self.sticky)
+            {
+                upperValue = boundValue(upperValue + deltaValue, toLowerValue: lowerValue - gapBetweenThumbs, upperValue: maximumValue)
+            }
+            
         } else if upperThumbLayer.highlighted {
             upperValue = boundValue(upperValue + deltaValue, toLowerValue: lowerValue + gapBetweenThumbs, upperValue: maximumValue)
+            if(self.sticky)
+            {
+                lowerValue = boundValue(lowerValue + deltaValue, toLowerValue: minimumValue, upperValue: upperValue + gapBetweenThumbs)
+            }
         }
         
         sendActions(for: .valueChanged)

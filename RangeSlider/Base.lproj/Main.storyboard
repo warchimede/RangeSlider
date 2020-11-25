@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,6 +19,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-zw-Yxv" customClass="RangeSlider" customModule="RangeSlider" customModuleProvider="target">
+                                <rect key="frame" x="50" y="488" width="275" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="bqb-l3-6NV"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDu-bb-Jot" customClass="RangeSlider" customModule="RangeSlider" customModuleProvider="target">
+                                <rect key="frame" x="50" y="526" width="275" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="a8H-bl-Tgg"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="sticky" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kQO-Yc-D8F" customClass="RangeSlider" customModule="RangeSlider" customModuleProvider="target">
                                 <rect key="frame" x="67.5" y="566" width="240" height="43"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,21 +70,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-zw-Yxv" customClass="RangeSlider" customModule="RangeSlider" customModuleProvider="target">
-                                <rect key="frame" x="50" y="516" width="275" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="bqb-l3-6NV"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kQO-Yc-D8F" firstAttribute="top" secondItem="AsD-zw-Yxv" secondAttribute="bottom" constant="20" id="345-Gp-Xga"/>
+                            <constraint firstItem="AsD-zw-Yxv" firstAttribute="leading" secondItem="DDu-bb-Jot" secondAttribute="leading" id="6iR-oc-23s"/>
                             <constraint firstItem="kQO-Yc-D8F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H1I-SU-ViG"/>
+                            <constraint firstItem="AsD-zw-Yxv" firstAttribute="trailing" secondItem="DDu-bb-Jot" secondAttribute="trailing" id="K40-co-Txl"/>
                             <constraint firstAttribute="trailing" secondItem="AsD-zw-Yxv" secondAttribute="trailing" constant="50" id="M26-Ns-STa"/>
+                            <constraint firstItem="DDu-bb-Jot" firstAttribute="top" secondItem="AsD-zw-Yxv" secondAttribute="bottom" constant="8" id="Oze-3f-fU9"/>
                             <constraint firstItem="AsD-zw-Yxv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="ZSF-Ee-JQM"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kQO-Yc-D8F" secondAttribute="bottom" constant="58" id="bL8-88-isy"/>
+                            <constraint firstItem="kQO-Yc-D8F" firstAttribute="top" secondItem="DDu-bb-Jot" secondAttribute="bottom" constant="10" id="vNv-Xf-mBo"/>
                         </constraints>
                     </view>
                 </viewController>
