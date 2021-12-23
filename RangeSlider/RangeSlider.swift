@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 HoodBrains. All rights reserved.
 //
 
-import UIKit
 import QuartzCore
+import UIKit
 
 class RangeSliderTrackLayer: CALayer {
     weak var rangeSlider: RangeSlider?
@@ -36,53 +36,56 @@ class RangeSliderTrackLayer: CALayer {
     }
 }
 
-class RangeSliderThumbLayer: CALayer {
+/*
+ class RangeSliderThumbLayer: CALayer {
+     var highlighted: Bool = false {
+         didSet {
+             setNeedsDisplay()
+         }
+     }
+
+     weak var rangeSlider: RangeSlider?
     
-    var highlighted: Bool = false {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    weak var rangeSlider: RangeSlider?
+     var strokeColor = UIColor.gray {
+         didSet {
+             setNeedsDisplay()
+         }
+     }
+
+     var lineWidth: CGFloat = 0.5 {
+         didSet {
+             setNeedsDisplay()
+         }
+     }
     
-    var strokeColor: UIColor = UIColor.gray {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    var lineWidth: CGFloat = 0.5 {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    override func draw(in ctx: CGContext) {
-        guard let slider = rangeSlider else {
-            return
-        }
+     override func draw(in ctx: CGContext) {
+         guard let slider = rangeSlider else {
+             return
+         }
         
-        let thumbFrame = bounds.insetBy(dx: 2.0, dy: 2.0)
-        let cornerRadius = thumbFrame.height * slider.curvaceousness / 2.0
-        let thumbPath = UIBezierPath(roundedRect: thumbFrame, cornerRadius: cornerRadius)
+         let thumbFrame = bounds.insetBy(dx: 2.0, dy: 2.0)
+         let cornerRadius = thumbFrame.height * slider.curvaceousness / 2.0
+         let thumbPath = UIBezierPath(roundedRect: thumbFrame, cornerRadius: cornerRadius)
         
-        // Fill
-        ctx.setFillColor(slider.thumbTintColor.cgColor)
-        ctx.addPath(thumbPath.cgPath)
-        ctx.fillPath()
+         // Fill
+         ctx.setFillColor(slider.thumbTintColor.cgColor)
+         ctx.addPath(thumbPath.cgPath)
+         ctx.fillPath()
         
-        // Outline
-        ctx.setStrokeColor(strokeColor.cgColor)
-        ctx.setLineWidth(lineWidth)
-        ctx.addPath(thumbPath.cgPath)
-        ctx.strokePath()
+         // Outline
+         ctx.setStrokeColor(strokeColor.cgColor)
+         ctx.setLineWidth(lineWidth)
+         ctx.addPath(thumbPath.cgPath)
+         ctx.strokePath()
         
-        if highlighted {
-            ctx.setFillColor(UIColor(white: 0.0, alpha: 0.1).cgColor)
-            ctx.addPath(thumbPath.cgPath)
-            ctx.fillPath()
-        }
-    }
-}
+         if highlighted {
+             ctx.setFillColor(UIColor(white: 0.0, alpha: 0.1).cgColor)
+             ctx.addPath(thumbPath.cgPath)
+             ctx.fillPath()
+         }
+     }
+ }
+  */
 
 @IBDesignable
 public class RangeSlider: UIControl {
@@ -123,41 +126,42 @@ public class RangeSlider: UIControl {
     }
     
     var gapBetweenThumbs: Double {
-        return 0.5 * Double(thumbWidth) * (maximumValue - minimumValue) / Double(bounds.width)
+        return 0.1
+//        return 2.0 * Double(thumbWidth) * (maximumValue - minimumValue) / Double(bounds.width)
     }
     
-    @IBInspectable public var trackTintColor: UIColor = UIColor(white: 0.9, alpha: 1.0) {
+    @IBInspectable public var trackTintColor = UIColor(white: 0.9, alpha: 1.0) {
         didSet {
             trackLayer.setNeedsDisplay()
         }
     }
     
-    @IBInspectable public var trackHighlightTintColor: UIColor = UIColor(red: 0.0, green: 0.45, blue: 0.94, alpha: 1.0) {
+    @IBInspectable public var trackHighlightTintColor = UIColor(red: 0.0, green: 0.45, blue: 0.94, alpha: 1.0) {
         didSet {
             trackLayer.setNeedsDisplay()
         }
     }
     
-    @IBInspectable public var thumbTintColor: UIColor = UIColor.white {
+    @IBInspectable public var thumbTintColor = UIColor.white {
         didSet {
             lowerThumbLayer.setNeedsDisplay()
             upperThumbLayer.setNeedsDisplay()
         }
     }
     
-    @IBInspectable public var thumbBorderColor: UIColor = UIColor.gray {
-        didSet {
-            lowerThumbLayer.strokeColor = thumbBorderColor
-            upperThumbLayer.strokeColor = thumbBorderColor
-        }
-    }
-    
-    @IBInspectable public var thumbBorderWidth: CGFloat = 0.5 {
-        didSet {
-            lowerThumbLayer.lineWidth = thumbBorderWidth
-            upperThumbLayer.lineWidth = thumbBorderWidth
-        }
-    }
+//    @IBInspectable public var thumbBorderColor: UIColor = UIColor.gray {
+//        didSet {
+//            lowerThumbLayer.strokeColor = thumbBorderColor
+//            upperThumbLayer.strokeColor = thumbBorderColor
+//        }
+//    }
+//
+//    @IBInspectable public var thumbBorderWidth: CGFloat = 0.5 {
+//        didSet {
+//            lowerThumbLayer.lineWidth = thumbBorderWidth
+//            upperThumbLayer.lineWidth = thumbBorderWidth
+//        }
+//    }
     
     @IBInspectable public var curvaceousness: CGFloat = 1.0 {
         didSet {
@@ -178,8 +182,14 @@ public class RangeSlider: UIControl {
     fileprivate var previouslocation = CGPoint()
     
     fileprivate let trackLayer = RangeSliderTrackLayer()
-    fileprivate let lowerThumbLayer = RangeSliderThumbLayer()
-    fileprivate let upperThumbLayer = RangeSliderThumbLayer()
+//    fileprivate let lowerThumbLayer = RangeSliderThumbLayer()
+//    fileprivate let upperThumbLayer = RangeSliderThumbLayer()
+    
+    fileprivate let lowerThumbLayer = UIImageView(image: UIImage(named: "point"))
+    fileprivate let upperThumbLayer = UIImageView(image: UIImage(named: "point"))
+    
+    var lowHighlighted = false
+    var upperHighlighted = false
     
     fileprivate var thumbWidth: CGFloat {
         return CGFloat(bounds.height)
@@ -196,13 +206,13 @@ public class RangeSlider: UIControl {
         initializeLayers()
     }
     
-    required public init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         initializeLayers()
     }
     
     override public func layoutSublayers(of: CALayer) {
-        super.layoutSublayers(of:layer)
+        super.layoutSublayers(of: layer)
         updateLayerFrames()
     }
     
@@ -213,28 +223,31 @@ public class RangeSlider: UIControl {
         trackLayer.contentsScale = UIScreen.main.scale
         layer.addSublayer(trackLayer)
         
-        lowerThumbLayer.rangeSlider = self
-        lowerThumbLayer.contentsScale = UIScreen.main.scale
-        layer.addSublayer(lowerThumbLayer)
+//        lowerThumbLayer.rangeSlider = self
+//        lowerThumbLayer.contentsScale = UIScreen.main.scale
+//        layer.addSublayer(lowerThumbLayer)
+//
+//        upperThumbLayer.rangeSlider = self
+//        upperThumbLayer.contentsScale = UIScreen.main.scale
+//        layer.addSublayer(upperThumbLayer)
         
-        upperThumbLayer.rangeSlider = self
-        upperThumbLayer.contentsScale = UIScreen.main.scale
-        layer.addSublayer(upperThumbLayer)
+        addSubview(lowerThumbLayer)
+        addSubview(upperThumbLayer)
     }
     
     func updateLayerFrames() {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         
-        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: bounds.height/3)
+        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: bounds.height / 3)
         trackLayer.setNeedsDisplay()
         
         let lowerThumbCenter = CGFloat(positionForValue(lowerValue))
-        lowerThumbLayer.frame = CGRect(x: lowerThumbCenter - thumbWidth/2.0, y: 0.0, width: thumbWidth, height: thumbWidth)
+        lowerThumbLayer.frame = CGRect(x: lowerThumbCenter - thumbWidth / 2.0, y: 0.0, width: thumbWidth, height: thumbWidth)
         lowerThumbLayer.setNeedsDisplay()
         
         let upperThumbCenter = CGFloat(positionForValue(upperValue))
-        upperThumbLayer.frame = CGRect(x: upperThumbCenter - thumbWidth/2.0, y: 0.0, width: thumbWidth, height: thumbWidth)
+        upperThumbLayer.frame = CGRect(x: upperThumbCenter - thumbWidth / 2.0, y: 0.0, width: thumbWidth, height: thumbWidth)
         upperThumbLayer.setNeedsDisplay()
         
         CATransaction.commit()
@@ -242,13 +255,12 @@ public class RangeSlider: UIControl {
     
     func positionForValue(_ value: Double) -> Double {
         return Double(bounds.width - thumbWidth) * (value - minimumValue) /
-            (maximumValue - minimumValue) + Double(thumbWidth/2.0)
+            (maximumValue - minimumValue) + Double(thumbWidth / 2.0)
     }
     
     func boundValue(_ value: Double, toLowerValue lowerValue: Double, upperValue: Double) -> Double {
         return min(max(value, lowerValue), upperValue)
     }
-    
     
     // MARK: - Touches
     
@@ -257,12 +269,14 @@ public class RangeSlider: UIControl {
         
         // Hit test the thumb layers
         if lowerThumbLayer.frame.contains(previouslocation) {
-            lowerThumbLayer.highlighted = true
+//            lowerThumbLayer.highlighted = true
+            lowHighlighted = true
         } else if upperThumbLayer.frame.contains(previouslocation) {
-            upperThumbLayer.highlighted = true
+//            upperThumbLayer.highlighted = true
+            upperHighlighted = true
         }
-        
-        return lowerThumbLayer.highlighted || upperThumbLayer.highlighted
+        return lowHighlighted || upperHighlighted
+//        return lowerThumbLayer.highlighted || upperThumbLayer.highlighted
     }
     
     override public func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -274,20 +288,26 @@ public class RangeSlider: UIControl {
         
         previouslocation = location
         
+//        print("deltaLocation = \(deltaLocation)")
+//        print("deltaValue = \(deltaValue)")
+
         // Update the values
-        if lowerThumbLayer.highlighted {
+//        if lowerThumbLayer.highlighted {
+        if lowHighlighted {
             lowerValue = boundValue(lowerValue + deltaValue, toLowerValue: minimumValue, upperValue: upperValue - gapBetweenThumbs)
-        } else if upperThumbLayer.highlighted {
+//        } else if upperThumbLayer.highlighted {
+        } else if upperHighlighted {
             upperValue = boundValue(upperValue + deltaValue, toLowerValue: lowerValue + gapBetweenThumbs, upperValue: maximumValue)
         }
-        
+         
         sendActions(for: .valueChanged)
-        
         return true
     }
     
     override public func endTracking(_ touch: UITouch?, with event: UIEvent?) {
-        lowerThumbLayer.highlighted = false
-        upperThumbLayer.highlighted = false
+//        lowerThumbLayer.highlighted = false
+//        upperThumbLayer.highlighted = false
+        lowHighlighted = false
+        upperHighlighted = false
     }
 }
