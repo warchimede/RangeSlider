@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/warchimede/RangeSlider.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/warchimede'
 
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '12.0'
   s.requires_arc = true
 
   s.source_files  = "RangeSlider/RangeSlider.swift"
