@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RangeSlider" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kQO-Yc-D8F" customClass="RangeSlider" customModule="RangeSlider" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="566" width="240" height="43"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1f-O0-sLQ" customClass="RangeSlider" customModule="WARangeSlider">
+                                <rect key="frame" x="59" y="642" width="275" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="AJi-lb-Ilg"/>
-                                    <constraint firstAttribute="height" constant="43" id="tnh-9Z-h2n"/>
+                                    <constraint firstAttribute="width" constant="275" id="K9f-CB-Dg6"/>
+                                    <constraint firstAttribute="height" constant="30" id="ngR-uE-pdN"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1O-Qa-jW9" customClass="RangeSlider" customModule="WARangeSlider">
+                                <rect key="frame" x="76.666666666666686" y="692" width="240" height="43"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="69s-OA-ReM"/>
+                                    <constraint firstAttribute="width" constant="240" id="Y1L-Te-IcO"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
@@ -54,27 +59,25 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-zw-Yxv" customClass="RangeSlider" customModule="RangeSlider" customModuleProvider="target">
-                                <rect key="frame" x="50" y="516" width="275" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="bqb-l3-6NV"/>
-                                </constraints>
-                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="kQO-Yc-D8F" firstAttribute="top" secondItem="AsD-zw-Yxv" secondAttribute="bottom" constant="20" id="345-Gp-Xga"/>
-                            <constraint firstItem="kQO-Yc-D8F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H1I-SU-ViG"/>
-                            <constraint firstAttribute="trailing" secondItem="AsD-zw-Yxv" secondAttribute="trailing" constant="50" id="M26-Ns-STa"/>
-                            <constraint firstItem="AsD-zw-Yxv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="ZSF-Ee-JQM"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kQO-Yc-D8F" secondAttribute="bottom" constant="58" id="bL8-88-isy"/>
+                            <constraint firstItem="H1O-Qa-jW9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EFq-HJ-tBa"/>
+                            <constraint firstItem="H1O-Qa-jW9" firstAttribute="top" secondItem="D1f-O0-sLQ" secondAttribute="bottom" constant="20" id="Kdv-39-eHX"/>
+                            <constraint firstItem="D1f-O0-sLQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nt2-wK-bPh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="H1O-Qa-jW9" secondAttribute="bottom" constant="83" id="nwj-G5-jtk"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="317" y="389"/>
+            <point key="canvasLocation" x="73" y="-27"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
