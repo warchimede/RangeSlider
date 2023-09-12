@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   }
   s.swift_version = '5.7'
   s.platform      = :ios, '12.0'
-  s.source_files  = "WARangeSlider/Sources/WARangeSlider/RangeSlider.swift"
+  s.source_files  = "Sources/WARangeSlider/RangeSlider.swift"
 end
