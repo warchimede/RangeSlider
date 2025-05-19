@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1f-O0-sLQ" customClass="RangeSlider" customModule="WARangeSlider">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1f-O0-sLQ" customClass="RangeSlider" customModule="Example" customModuleProvider="target">
                                 <rect key="frame" x="59" y="642" width="275" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="height" constant="30" id="ngR-uE-pdN"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1O-Qa-jW9" customClass="RangeSlider" customModule="WARangeSlider">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1O-Qa-jW9" customClass="RangeSlider" customModule="Example" customModuleProvider="target">
                                 <rect key="frame" x="76.666666666666686" y="692" width="240" height="43"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

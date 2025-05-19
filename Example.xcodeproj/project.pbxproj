@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93360D122AB0C3DC003C0669 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93360D112AB0C3DC003C0669 /* RangeSlider.swift */; };
 		93C8129D2AAA3F3C005CEA65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8129C2AAA3F3C005CEA65 /* AppDelegate.swift */; };
 		93C8129F2AAA3F3C005CEA65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8129E2AAA3F3C005CEA65 /* SceneDelegate.swift */; };
 		93C812A12AAA3F3C005CEA65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C812A02AAA3F3C005CEA65 /* ViewController.swift */; };
 		93C812A42AAA3F3C005CEA65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C812A22AAA3F3C005CEA65 /* Main.storyboard */; };
 		93C812A62AAA3F3C005CEA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C812A52AAA3F3C005CEA65 /* Assets.xcassets */; };
 		93C812A92AAA3F3C005CEA65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C812A72AAA3F3C005CEA65 /* LaunchScreen.storyboard */; };
-		93C812B62AAA41F4005CEA65 /* WARangeSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 93C812B52AAA41F4005CEA65 /* WARangeSlider */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93360D112AB0C3DC003C0669 /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeSlider.swift; path = Sources/WARangeSlider/RangeSlider.swift; sourceTree = SOURCE_ROOT; };
 		93C812992AAA3F3C005CEA65 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C8129C2AAA3F3C005CEA65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93C8129E2AAA3F3C005CEA65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -25,7 +26,6 @@
 		93C812A52AAA3F3C005CEA65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93C812A82AAA3F3C005CEA65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93C812AA2AAA3F3C005CEA65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93C812B32AAA40F1005CEA65 /* WARangeSlider */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = WARangeSlider; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93C812B62AAA41F4005CEA65 /* WARangeSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +42,6 @@
 		93C812902AAA3F3C005CEA65 = {
 			isa = PBXGroup;
 			children = (
-				93C812B32AAA40F1005CEA65 /* WARangeSlider */,
 				93C8129B2AAA3F3C005CEA65 /* Example */,
 				93C8129A2AAA3F3C005CEA65 /* Products */,
 				93C812B42AAA41F4005CEA65 /* Frameworks */,
@@ -61,6 +59,7 @@
 		93C8129B2AAA3F3C005CEA65 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				93360D112AB0C3DC003C0669 /* RangeSlider.swift */,
 				93C8129C2AAA3F3C005CEA65 /* AppDelegate.swift */,
 				93C8129E2AAA3F3C005CEA65 /* SceneDelegate.swift */,
 				93C812A02AAA3F3C005CEA65 /* ViewController.swift */,
@@ -96,7 +95,6 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				93C812B52AAA41F4005CEA65 /* WARangeSlider */,
 			);
 			productName = Example;
 			productReference = 93C812992AAA3F3C005CEA65 /* Example.app */;
@@ -153,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93360D122AB0C3DC003C0669 /* RangeSlider.swift in Sources */,
 				93C812A12AAA3F3C005CEA65 /* ViewController.swift in Sources */,
 				93C8129D2AAA3F3C005CEA65 /* AppDelegate.swift in Sources */,
 				93C8129F2AAA3F3C005CEA65 /* SceneDelegate.swift in Sources */,
@@ -373,13 +372,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		93C812B52AAA41F4005CEA65 /* WARangeSlider */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WARangeSlider;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 93C812912AAA3F3C005CEA65 /* Project object */;
 }
